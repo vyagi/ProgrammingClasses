@@ -12,6 +12,9 @@ namespace BasicMethods
             Console.WriteLine(GetBiggerNumber(-20,8));
             
             Console.WriteLine(GCD(56,56));
+
+            Console.WriteLine(IsPrime(17));
+            Console.WriteLine(IsPrime(18));
         }
     }
 }
