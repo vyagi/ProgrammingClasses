@@ -37,5 +37,15 @@ namespace BasicMethods
             }
             return true;
         }
+        public static bool AreCoprime(int a, int b)
+        {
+            return GCD(a, b) == 1;
+
+            //int gcd = GCD(a, b);
+            //if (gcd == 1)
+            //    return true;
+            //else
+            //    return false;
+        }
     }
 }

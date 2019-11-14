@@ -15,6 +15,9 @@ namespace BasicMethods
 
             Console.WriteLine(IsPrime(17));
             Console.WriteLine(IsPrime(18));
+
+            Console.WriteLine(AreCoprime(8,9));
+            Console.WriteLine(AreCoprime(8,10));
         }
     }
 }
