@@ -1,4 +1,5 @@
 ﻿using System;
+using static BasicMethods.MathUtilities;
 
 namespace BasicMethods
 {
@@ -6,7 +7,11 @@ namespace BasicMethods
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(MathUtilities.SolveLinearEquation(3, 6));
+            Console.WriteLine(SolveLinearEquation(3, 6));
+            Console.WriteLine(GetBiggerNumber(10,7));
+            Console.WriteLine(GetBiggerNumber(-20,8));
+            
+            Console.WriteLine(GCD(56,56));
         }
     }
 }
