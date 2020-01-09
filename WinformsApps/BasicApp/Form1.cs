@@ -12,6 +12,8 @@ namespace BasicApp
 {
     public partial class Form1 : Form
     {
+        private Random _random = new Random();
+        private int _numberToGuess;
         public Form1()
         {
             InitializeComponent();
@@ -20,8 +22,46 @@ namespace BasicApp
 
         private void startButton_Click(object sender, EventArgs e)
         {
+            messageLabel.Text = "Guess a number from 1 to 100";
+            startButton.Enabled = false;
+            _numberToGuess = _random.Next(1, 101);
 
+            guessButton.Enabled = true;
+            guessInput.Enabled = true;
         }
 
+        private void guessButton_Click(object sender, EventArgs e)
+        {
+            string input = guessInput.Text;
+            guessInput.Text = "";
+            
+            int result;
+            bool validNumber = int.TryParse(input, out result);
+            if (!validNumber)
+            {
+                MessageBox.Show("Please provide a valid number");
+                return;
+            }
+            if (result < 1 || result > 100)
+            {
+                MessageBox.Show("Please provide a number from 1 to 100");
+                return;
+            }
+            if (result > _numberToGuess)
+            {
+                messageLabel.Text = "Too big. Guess again";
+            }
+            else if(result < _numberToGuess)
+            {
+                messageLabel.Text = "Too small. Guess again";
+            }
+            else
+            {
+                messageLabel.Text = "You did it !!! Press the start button for another game";
+                startButton.Enabled = true;
+                guessButton.Enabled = false;
+                guessInput.Enabled = false;
+            }
+        }
     }
 }
