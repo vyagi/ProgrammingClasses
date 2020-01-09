@@ -26,7 +26,6 @@ namespace BasicApp
             startButton.Enabled = false;
             _numberToGuess = _random.Next(1, 101);
 
-            guessButton.Enabled = true;
             guessInput.Enabled = true;
         }
 
@@ -35,18 +34,8 @@ namespace BasicApp
             string input = guessInput.Text;
             guessInput.Text = "";
             
-            int result;
-            bool validNumber = int.TryParse(input, out result);
-            if (!validNumber)
-            {
-                MessageBox.Show("Please provide a valid number");
-                return;
-            }
-            if (result < 1 || result > 100)
-            {
-                MessageBox.Show("Please provide a number from 1 to 100");
-                return;
-            }
+            int result = int.Parse(input);
+            
             if (result > _numberToGuess)
             {
                 messageLabel.Text = "Too big. Guess again";
@@ -61,6 +50,21 @@ namespace BasicApp
                 startButton.Enabled = true;
                 guessButton.Enabled = false;
                 guessInput.Enabled = false;
+            }
+        }
+
+        private void guessInput_TextChanged(object sender, EventArgs e)
+        {
+            string input = guessInput.Text;
+            int result;
+            bool validNumber = int.TryParse(input, out result);
+            if (!validNumber || result < 1 || result > 100)
+            {
+                guessButton.Enabled = false;
+            }
+            else
+            {
+                guessButton.Enabled = true;
             }
         }
     }
