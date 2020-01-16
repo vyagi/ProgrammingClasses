@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BasicApp
@@ -14,6 +7,7 @@ namespace BasicApp
     {
         private Random _random = new Random();
         private int _numberToGuess;
+        private int _numberOfGuesses;
         public Form1()
         {
             InitializeComponent();
@@ -27,10 +21,17 @@ namespace BasicApp
             _numberToGuess = _random.Next(1, 101);
 
             guessInput.Enabled = true;
+            _numberOfGuesses = 0;
+            guessNumberLabel.Text = _numberOfGuesses.ToString();
+
+            guessHistory.Items.Clear();
         }
 
         private void guessButton_Click(object sender, EventArgs e)
         {
+            _numberOfGuesses++;
+            guessNumberLabel.Text = _numberOfGuesses.ToString();
+
             string input = guessInput.Text;
             guessInput.Text = "";
             
@@ -39,10 +40,12 @@ namespace BasicApp
             if (result > _numberToGuess)
             {
                 messageLabel.Text = "Too big. Guess again";
+                guessHistory.Items.Add(result.ToString() + " - too big");
             }
             else if(result < _numberToGuess)
             {
                 messageLabel.Text = "Too small. Guess again";
+                guessHistory.Items.Add(result.ToString() + " - too small");
             }
             else
             {

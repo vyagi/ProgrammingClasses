@@ -32,6 +32,8 @@
             this.messageLabel = new System.Windows.Forms.Label();
             this.guessInput = new System.Windows.Forms.TextBox();
             this.guessButton = new System.Windows.Forms.Button();
+            this.guessNumberLabel = new System.Windows.Forms.Label();
+            this.guessHistory = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // startButton
@@ -73,11 +75,31 @@
             this.guessButton.UseVisualStyleBackColor = true;
             this.guessButton.Click += new System.EventHandler(this.guessButton_Click);
             // 
+            // guessNumberLabel
+            // 
+            this.guessNumberLabel.AutoSize = true;
+            this.guessNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.guessNumberLabel.Location = new System.Drawing.Point(221, 13);
+            this.guessNumberLabel.Name = "guessNumberLabel";
+            this.guessNumberLabel.Size = new System.Drawing.Size(70, 76);
+            this.guessNumberLabel.TabIndex = 4;
+            this.guessNumberLabel.Text = "0";
+            // 
+            // guessHistory
+            // 
+            this.guessHistory.FormattingEnabled = true;
+            this.guessHistory.Location = new System.Drawing.Point(16, 110);
+            this.guessHistory.Name = "guessHistory";
+            this.guessHistory.Size = new System.Drawing.Size(275, 173);
+            this.guessHistory.TabIndex = 5;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(307, 294);
+            this.Controls.Add(this.guessHistory);
+            this.Controls.Add(this.guessNumberLabel);
             this.Controls.Add(this.guessButton);
             this.Controls.Add(this.guessInput);
             this.Controls.Add(this.messageLabel);
@@ -95,6 +117,8 @@
         private System.Windows.Forms.Label messageLabel;
         private System.Windows.Forms.TextBox guessInput;
         private System.Windows.Forms.Button guessButton;
+        private System.Windows.Forms.Label guessNumberLabel;
+        private System.Windows.Forms.ListBox guessHistory;
     }
 }
 
