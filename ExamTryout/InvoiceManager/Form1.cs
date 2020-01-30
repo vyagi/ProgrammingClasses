@@ -36,12 +36,9 @@ namespace InvoiceManager
                 string[] elements = line.Split('\t');
                 totalSum = totalSum + int.Parse(elements[1]);
 
-                if (!dates.Contains(elements[0]))
-                {
-                    dates.Add(elements[0]);
-                }
+                dates.Add(elements[0]);
             };
-            string message = $"Total dates: {dates.Count}, total amount {totalSum}.";
+            string message = $"Total dates: {dates.Distinct().Count()}, total amount {totalSum}.";
             resultLabel.Text = message;
         }
     }
